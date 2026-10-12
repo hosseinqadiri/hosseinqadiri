@@ -23,40 +23,6 @@ I am the **CEO of Paradise Supply Chain Holding (شرکت تعاونی زنجی�
 
 Under my leadership at **Paradise Supply Chain Holding**, our core engineering teams build and maintain the production pipeline for **MetaRang**—a massive multiplayer virtual world and industrial digital twin platform supporting multi-platform clients (Windows Desktop, WebGL, Android, and OpenXR/VR).
 
-+------------------------------------------+
-                    |      Clients: WebGL / Win32 / VR / iOS   |
-                    +--------------------+---------------------+
-                                         |
-               +-------------------------+-------------------------+
-               |                                                   |
-     [HTTPS / WSS (Proxy)]                                   [Native gRPC]
-               |                                                   |
-               v                                                   v
-     +-------------------+                               +-------------------+
-     |    Nginx Edge     |                               |    Envoy Proxy    |
-     | (TLS Termination) |                               | (gRPC-Web / JWT)  |
-     +---------+---------+                               +---------+---------+
-               |                                                   |
-               +-------------------------+-------------------------+
-                                         |
-                                         v
-           +---------------------------------------------------------------+
-           |                 Metaverse Distributed Core                    |
-           +---------------------------------------------------------------+
-           | • Realtime Session Engine (Rooms, Directory, Ack/Envelope)    |
-           | • Auth & SSO Service (JWT, Rotating Refresh Tokens)           |
-           | • GameServerControl (Warm-Pool Allocator & Ticket Security)   |
-           +-------------------------------+-------------------------------+
-                                           |
-               +---------------------------+---------------------------+
-               |                                                       |
-               v                                                       v
-     +--------------------+                                  +--------------------+
-     | Dedicated Game     |                                  | Dedicated Media    |
-     | Server (Linux DGS) |                                  | Nodes (VME2 Engine)|
-     +--------------------+                                  +--------------------+
-
-     ### Key Production Engineering Highlights:
 * **Dedicated Game Server (DGS) Orchestration:** Real-time authoritative server lifecycle management featuring dynamic warm-pool provisioning, single-use client tickets, heartbeat health probes, and automated orphan recovery.
 * **Low-Latency Spatial Media Engine (VME2):** Custom real-time voice infrastructure utilizing Opus (RFC 6716), Adaptive Jitter Buffers, PLC/FEC packet loss recovery, and dedicated media nodes cleanly decoupled from the game payload plane.
 * **Distributed Microservices Mesh:** Hybrid microservices deployed across Go and Node.js engines behind Envoy and Nginx gateways, backed by MongoDB and PostgreSQL data layers.
